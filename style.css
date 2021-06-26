@@ -1,0 +1,86 @@
+h1 {
+  font-family: Sorts Mill Goudy;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 52px;
+
+  color: #000000;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  font-family: Sorts Mill Goudy;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 52px;
+}
+
+h4 {
+  padding-left: 50px;
+  font-family: Sorts Mill Goudy;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 52px;
+}
+
+body {
+  margin: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+table {
+ margin: auto;
+ padding: 50px;
+}
+
+p {
+  padding-left: 50px;
+  font-family: Sorts Mill Goudy;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+header {
+
+  background: #C5D2F2;
+}
+
+nav {
+  margin: 5px;
+  background-color: rgba(151, 163, 228, 1)
+  position: auto;
+  font-family: Sorts Mill Goudy;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.one span{
+  background: red;
+  display: inline-block;
+  padding: 10px;
+  color: #fff;
+  margin: 10px 0;
+}
+
+.availiable span {
+  background: green;
+}
+
+.ordered span:after {
+  content: "ordered";
+  margin-left: 10px;
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://unpkg.com/vue"></script>
+        <title>Resturant Website</title>
+        <style>
+        </style>
+    </head>
+<body>
+  <!--menu page-->
+    <div id='appMenu'>
+    <!--order(computed property)-->
+    <button v-on:click="order++">Add to Order</button>
+    <button v-on:click="removeOrder">Delete Order</button>
+    <p>Items in Order = {{ addToOrder }}</p>
+    <!--availiable(Dynamic CSS)-->
+    <div v-bind:class="{availiable: availiabe}">
+      <span class="one">Chicken Strips<span>
+      <button v-on:click="ordered = !ordered">Add to Order</button>
+        <div v-bind:class="compClasses">
+          <span class="one">Chicken Strips<span>
+        </div>
+    <div>
+  </div>
+  <div>
+    /**/
+    <menu></menu>
+  </div>
+<script>
+new Vue({
+    /*custom filters rendered localy*/
+  filters: {
+    'to-uppercase': function(value){
+      return.value.toUpperCase();
+    }
+  },
+  /*custom directives rendered localy*/
+  directives: {
+    'rainbow' {
+      bind(el, binding, vnode){
+
+      }
+    }
+  }
+});
+</script>
+
+  <!--contact page-->
+  <!--List rendering-->
+      <div id-'appContact'>
+        <div v-for="location in locations">
+        <table>
+          <th>
+            <tr>{{ location.location }}</tr>
+            <tr>{{ location.email }}</tr>
+            <tr>{{ location.phone }}</tr>
+          </th>
+        <table>
+        </div>
+          <div v-for="(val.key) in locations">
+          <table>
+            <th>
+              <tr>{{ key }}: {{ val }}</tr>
+            </th>
+          <table>
+          </div>
+      </div>
+
+  <!--booking page-->
+    <div id=appBooking>
+      <!--Booking(conditionals/event modifyers)-->
+      <button v-on:click.once="bookDay = !bookDay">Book Day</button>
+      <button v-on:click.onvce="bookTime = !bookTime">Book Time</button>
+      <p v-if="bookTime">You have booked a time!</p>
+      <p v-if="bookDay">You have booked a day!</p>
+
+      <div>
+        <button v-on:click="selectDay = !selectDay">16</button>
+        <p v-show="selectDay">You have selected a day</p>
+      </div>
+    </div>
+    <!--user input (event handling) -->
+    <div>
+      <label>Name:</label>
+      <input type="text" v-on:keyup.enter="logName"/>
+      <label>Phone Number:</label>
+      <input type="text" v-on:keyup.enter="logPhone"/>
+    </div>
+    <!--input binding-->
+    <div id="bookDetails">
+      <label>Name:</label>
+      <input type="text" v-model="name"/>
+      <label>Phone Number:</label>
+      <input type="text" v-model="phone"/>
+
+      <div id="finalBook">
+        <p>Name: {{ name }}</p>
+        <p>Phone: {{ phone }}</p>
+      </div>
+    </div>
+
+  <!--About page-->
+  <style>
+  .sliding-enter-active, .sliding-leave-active {
+    transition: all 2s ease-in-out;
+  }
+  /*fade leave-active below*/
+  .sliding-enter, .sliding-leave-to {
+    transform: translateX(100px);
+  }
+</style>
+  <div id="databinding">
+      <button v-on:click="show = !show">Click Me</button>
+      <transition name = "sliding">
+        <p v-show = "show">
+          <img src = "" />
+        </p>
+      </transition>
+    </div>
+
+  <!--queries-->
+  <div>
+  <!--Binding the vue app data through props-->
+  <custom-article></custom-article>
+  </div>
+
+  <script>
+    /*Creating components and props*/
+    Vue.component('custom-article', {
+      props: ['content'],
+      template: '<h1>{{ content }}</h1><input type="text" v-model="question"/>'
+    });
+    new Vue({
+      el: '#app',
+      data: {
+        title: 'Any queries you have you type here'
+        question: ''
+      },
+      methods: {
+        querySubmit:
+      }
+    });
+    </script>
+
+    <div>
+  <h1>{{ label }}</h1>
+  <example-component1>
+    <template v-slot:parentslot>
+      <example-component2></example-component2>
+    </template>
+  </example-component1>
+
+  <example-component2></example-component2>
+</div>
+
+<script>
+  Vue.component('example-componet2', {
+    template: '<div><p><slot>Some Data</slot></p></div>'
+  })
+
+  new Vue({
+    el: '#app',
+    data: {
+      label: "slots Example"
+    }
+  })
+</script>
+
+  <!--header-->
+  <div>
+  <p style = "font-size:25px;">Language Displayed: {{ languageClicked }}</p>
+  <user-button v-for = "(item, index) in lanugages"
+    v-bind:item = "item"
+    v-bind:index = "index"
+    v-on:showLanguage = "languageDisp">
+  </user-button>
+</div>
+
+<script>
+  //component creation
+  Vue.component('user-button', {
+    template: '<button v-on:click="displayLanguage(item)"><span style = "font-size:25px;">{{ item }}</span></button>',
+    props: ['item'],
+    methods: {
+      displayLanguage: function(lng) {
+        //binds showLangeuage event in the div that renders
+        this.$emit('showLanguage', lng);
+      }
+    }
+  })
+  var app = new Vue({
+    el: '#databinding',
+    data: {
+      languageClicked: "",
+      languages: ["HTML", "CSS", "Vue"]
+    },
+    methods: {
+      languageDisp: function(a) {
+        //clickedevent is stored
+        this.languageClicked = a;
+      }
+    }
+  })
+  </script>
+
+  <script src="app.js"></script>
+</body>
+</html>
